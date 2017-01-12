@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="greetGoTestProject.repository.StarMapper">
+    <cache />
+
+        <select id="getStar" parameterType="int" resultMap="detailedStarResultMap">
+            SELECT
+            s.star_id,
+            s.star_name,
+            s.coordinate1,
+            s.coordinate2,
+            s.star_type_id,
+            s.discoverer_id,
+            d.discoverer_id,
+            d.discoverer_name,
+            st.star_type_id,
+            st.star_type
+            FROM
+            stars s
+            LEFT JOIN discoverer d ON s.discoverer_id = d.discoverer_id
+            LEFT JOIN star_type st ON s.star_type_id = st.star_type_id
+            WHERE s.star_id = #{id}
+        </select>
+    <select id="getAllStars" resultMap="detailedStarResultMap">
+        SELECT
+        s.star_id,
+        s.star_name,
+        s.coordinate1,
+        s.coordinate2,
+        s.star_type_id,
+        s.discoverer_id,
+        d.discoverer_id,
+        d.discoverer_name,
+        st.star_type_id,
+        st.star_type
+        FROM
+        stars s
+        LEFT JOIN discoverer d ON s.discoverer_id = d.discoverer_id
+        LEFT JOIN star_type st ON s.star_type_id = st.star_type_id
+    </select>
+
+
+
+
+
+        <resultMap id="detailedStarResultMap" type="Star">
+            <constructor>
+                <idArg column="star_id" javaType="int" />
+            </constructor>
+            <result property="name" column="star_name" />
+            <result property="coordinate1" column="coordinate1" />
+            <result property="coordinate2" column="coordinate2" />
+            <result property="starType" column="star_type" javaType="StarType" typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
+            <association property="discoverer" column="discoverer_id"
+                         javaType="Discoverer">
+                <id property="id" column="discoverer_id" />
+                <result property="name" column="discoverer_name" />
+            </association>
+        </resultMap>
+    </mapper>
+
