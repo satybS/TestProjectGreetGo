@@ -12,9 +12,9 @@ public class Star implements Serializable {
     private String coordinate1;
     private String coordinate2;
     private StarType starType;
-    private Discoverer discoverer;
+    private String discoverer;
 
-    public Star(String name, String coordinate1, String coordinate2, StarType starType, Discoverer discoverer) {
+    public Star(String name, String coordinate1, String coordinate2, StarType starType, String discoverer) {
         this.name = name;
         this.coordinate1 = coordinate1;
         this.coordinate2 = coordinate2;
@@ -22,7 +22,7 @@ public class Star implements Serializable {
         this.discoverer = discoverer;
     }
 
-    public Star(Integer id, String name, String coordinate1, String coordinate2, StarType starType, Discoverer discoverer) {
+    public Star(Integer id, String name, String coordinate1, String coordinate2, StarType starType, String discoverer) {
         this.id = id;
         this.name = name;
         this.coordinate1 = coordinate1;
@@ -39,7 +39,7 @@ public class Star implements Serializable {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -75,12 +75,16 @@ public class Star implements Serializable {
         this.starType = starType;
     }
 
-    public Discoverer getDiscoverer() {
+    public String getDiscoverer() {
         return discoverer;
     }
 
-    public void setDiscoverer(Discoverer discoverer) {
+    public void setDiscoverer(String discoverer) {
         this.discoverer = discoverer;
+    }
+
+    public boolean isNew() {
+        return getId() == null;
     }
 
     @Override

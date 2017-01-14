@@ -5,7 +5,7 @@
     <groupId>GreetGoTestProject</groupId>
     <artifactId>GreetGoTestProject</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <name>greetGoTestProject</name>
     <url>http://maven.apache.org</url>
@@ -34,11 +34,12 @@
         <webjars-bootstrap.version>3.3.7-1</webjars-bootstrap.version>
         <webjars-jquery.version>2.2.4</webjars-jquery.version>
         <webjars-datatables.version>1.10.12-1</webjars-datatables.version>
+        <webjars-noty.version>2.3.8</webjars-noty.version>
 
     </properties>
 
     <build>
-        <finalName>topjava</finalName>
+        <finalName>greetGoTestProject</finalName>
         <defaultGoal>package</defaultGoal>
         <plugins>
             <plugin>
@@ -70,6 +71,17 @@
                     </systemProperties>
                     <protocol>org.apache.coyote.http11.Http11NioProtocol</protocol>
                 </configuration>
+
+                <!--<configuration>-->
+                <!--<configfiles>-->
+                    <!--<configfile>-->
+                        <!--<file>src/main/resources/tomcat/context.xml</file>-->
+                        <!--<todir>conf/Catalina/localhost/</todir>-->
+                        <!--<tofile>context.xml.default</tofile>-->
+                    <!--</configfile>-->
+                <!--</configfiles>-->
+                <!--</configuration>-->
+
                 <dependencies>
                     <dependency>
                         <groupId>org.postgresql</groupId>
@@ -77,6 +89,17 @@
                         <version>${postgresql.version}</version>
                     </dependency>
                 </dependencies>
+                <deployables>
+                    <deployable>
+                        <groupId>greetGoTestProject</groupId>
+                        <artifactId>greetGoTestProject</artifactId>
+                        <type>war</type>
+                        <properties>
+                            <context>greetGoTestProject</context>
+                        </properties>
+                    </deployable>
+                </deployables>
+
             </plugin>
         </plugins>
     </build>
@@ -200,6 +223,11 @@
             <version>${webjars-jquery.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>noty</artifactId>
+            <version>${webjars-noty.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>datatables</artifactId>
             <version>${webjars-datatables.version}</version>
@@ -222,7 +250,7 @@
             <version>${jackson-json.version}</version>
         </dependency>
 
-        Test
+        <!--Test-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -258,5 +286,21 @@
             <artifactId>spring-security-test</artifactId>
             <version>${spring-security.version}</version>
         </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>1.1.0.Final</version>
+        </dependency>
     </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-framework-bom</artifactId>
+                <version>${spring.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>

@@ -13,19 +13,18 @@
 <div class="jumbotron">
     <div class="container">
         <div class="shadow">
-            <h3><fmt:message key="users.title"/></h3>
+            <h3>Список звезд</h3>
 
             <div class="view-box">
-                <a class="btn btn-sm btn-info" onclick="add('<fmt:message key="users.add"/>')"><fmt:message key="users.add"/></a>
-
+                <a class="btn btn-sm btn-info" onclick="add('Добавить Звезду')">Добавить Звезду</a>
                 <table class="table table-striped display" id="datatable">
                     <thead>
                     <tr>
-                        <th><fmt:message key="users.name"/></th>
-                        <th><fmt:message key="users.email"/></th>
-                        <th><fmt:message key="users.roles"/></th>
-                        <th><fmt:message key="users.active"/></th>
-                        <th><fmt:message key="users.registered"/></th>
+                        <th>Название Звезды</th>
+                        <th>Высота</th>
+                        <th>Долгота</th>
+                        <th>Класс звезды</th>
+                        <th>Открыватель</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -35,7 +34,6 @@
         </div>
     </div>
 </div>
-<jsp:include page="fragments/footer.jsp"/>
 
 <div class="modal fade" id="editRow">
     <div class="modal-dialog">
@@ -46,35 +44,48 @@
             </div>
             <div class="modal-body">
                 <form:form class="form-horizontal" method="post" id="detailsForm">
-                    <input type="text" hidden="hidden" id="id" name="id">
+                    <input type="hidden" id="id" name="id">
 
                     <div class="form-group">
-                        <label for="name" class="control-label col-xs-3"><fmt:message key="users.name"/></label>
+                        <label for="name" class="control-label col-xs-3">Название Звезды</label>
 
                         <div class="col-xs-9">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="<fmt:message key="users.name"/>">
+                            <input class="form-control" id="name"
+                                   name="name" placeholder="Название Звезды"/>
                         </div>
                     </div>
-
                     <div class="form-group">
-                        <label for="email" class="control-label col-xs-3"><fmt:message key="users.email"/></label>
+                        <label for="coordinate1" class="control-label col-xs-3">Высота</label>
 
                         <div class="col-xs-9">
-                            <input type="email" class="form-control" id="email" name="email" placeholder="<fmt:message key="users.email"/>">
+                            <input class="form-control" id="coordinate1" name="name" placeholder="Высота"/>
                         </div>
                     </div>
-
                     <div class="form-group">
-                        <label for="password" class="control-label col-xs-3"><fmt:message key="users.password"/></label>
+                        <label for="coordinate2" class="control-label col-xs-3">Долгота</label>
 
                         <div class="col-xs-9">
-                            <input type="password" class="form-control" id="password" name="password" placeholder="<fmt:message key="users.password"/>">
+                            <input type="text" class="form-control" id="coordinate2" name="coordinate2"
+                                   placeholder="Долгота"/>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="starType" class="control-label col-xs-3">Класс Звезды</label>
 
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" id="starType" name="starType" placeholder = "Класс Звезды"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="discoverer" class="control-label col-xs-3">Открыватель</label>
+
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" id="discoverer" name="starType" placeholder = "Открыватель"/>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <div class="col-xs-offset-3 col-xs-9">
-                            <button class="btn btn-primary" type="button" onclick="save()"><fmt:message key="common.save"/></button>
+                            <button class="btn btn-primary" type="button" onclick="save()">Сохранить</button>
                         </div>
                     </div>
                 </form:form>
@@ -84,13 +95,14 @@
 </div>
 </body>
 <script type="text/javascript">
-    var edit_title ='<fmt:message key="users.edit"/>';
+    var edit_title ='Edit star';
 </script>
+
 <script type="text/javascript" src="webjars/jquery/2.2.4/jquery.min.js"></script>
 <script type="text/javascript" src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="webjars/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="webjars/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>
 <script type="text/javascript" src="webjars/noty/2.3.8/js/noty/packaged/jquery.noty.packaged.min.js"></script>
 <script type="text/javascript" src="resources/js/datatablesUtil.js"></script>
-<script type="text/javascript" src="resources/js/userDatatables.js"></script>
+<script type="text/javascript" src="resources/js/mealDatatables.js"></script>
 </html>

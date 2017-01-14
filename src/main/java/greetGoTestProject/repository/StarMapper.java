@@ -1,6 +1,5 @@
 package greetGoTestProject.repository;
 
-import greetGoTestProject.model.Discoverer;
 import greetGoTestProject.model.Star;
 import greetGoTestProject.model.StarType;
 import org.apache.ibatis.annotations.*;
@@ -15,7 +14,9 @@ public interface StarMapper {
 
     void saveStar(Star star);
 
-    boolean delete(int id);
+    void updateStar(Star star);
+
+    boolean deleteStar(int id);
 
     Star getStar(int id);
 
@@ -23,5 +24,5 @@ public interface StarMapper {
 
     Collection<StarType> getStarTypes();
 
-    Collection<Discoverer> getDiscoverers();
+    Collection<String> getDiscoverers();
 }

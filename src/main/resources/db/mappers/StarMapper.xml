@@ -4,61 +4,80 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="greetGoTestProject.repository.StarMapper">
-    <cache />
+    <cache/>
 
-        <select id="getStar" parameterType="int" resultMap="detailedStarResultMap">
+    <select id="getStar" parameterType="int" resultMap="detailedStarResultMap">
             SELECT
-            s.star_id,
-            s.star_name,
-            s.coordinate1,
-            s.coordinate2,
-            s.star_type_id,
-            s.discoverer_id,
-            d.discoverer_id,
-            d.discoverer_name,
-            st.star_type_id,
-            st.star_type
+            star_id,
+            star_name,
+            coordinate1,
+            coordinate2,
+            star_type,
+            discoverer
             FROM
-            stars s
-            LEFT JOIN discoverer d ON s.discoverer_id = d.discoverer_id
-            LEFT JOIN star_type st ON s.star_type_id = st.star_type_id
-            WHERE s.star_id = #{id}
+            stars
+            WHERE star_id = #{id}
         </select>
     <select id="getAllStars" resultMap="detailedStarResultMap">
         SELECT
-        s.star_id,
-        s.star_name,
-        s.coordinate1,
-        s.coordinate2,
-        s.star_type_id,
-        s.discoverer_id,
-        d.discoverer_id,
-        d.discoverer_name,
-        st.star_type_id,
-        st.star_type
+        star_id,
+        star_name,
+        coordinate1,
+        coordinate2,
+        star_type,
+        discoverer
         FROM
-        stars s
-        LEFT JOIN discoverer d ON s.discoverer_id = d.discoverer_id
-        LEFT JOIN star_type st ON s.star_type_id = st.star_type_id
+        stars
     </select>
 
+    <select id="getStarTypes" resultMap="StarTypeResultMap">
+        SELECT * FROM star_type
+    </select>
 
+    <select id="getDiscoverers" resultType="String">
+        SELECT DISTINCT discoverer FROM stars
+    </select>
 
+    <delete id="deleteStar" parameterType="int">
+        DELETE FROM stars WHERE star_id = #{id}
+    </delete>
+    <insert id="saveStar" parameterType="Star" useGeneratedKeys="true" keyProperty="id" keyColumn="star_id">
+       INSERT INTO stars(star_name, coordinate1, coordinate2, star_type, discoverer)
+             VALUES(
+                #{name},
+                #{coordinate1},
+                #{coordinate2},
+                #{starType},
+                #{discoverer}
+             )
+    </insert>
 
+    <update id="updateStar" parameterType="Star">
+        UPDATE stars SET
+        star_name = #{name},
+        coordinate1 = #{coordinate1},
+        coordinate2 = #{coordinate2},
+        star_type = #{starType},
+        discoverer = #{discoverer}
+        WHERE star_id = #{id}
+    </update>
 
-        <resultMap id="detailedStarResultMap" type="Star">
-            <constructor>
-                <idArg column="star_id" javaType="int" />
-            </constructor>
-            <result property="name" column="star_name" />
-            <result property="coordinate1" column="coordinate1" />
-            <result property="coordinate2" column="coordinate2" />
-            <result property="starType" column="star_type" javaType="StarType" typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
-            <association property="discoverer" column="discoverer_id"
-                         javaType="Discoverer">
-                <id property="id" column="discoverer_id" />
-                <result property="name" column="discoverer_name" />
-            </association>
-        </resultMap>
-    </mapper>
+    <resultMap id="StarTypeResultMap" type="StarType">
+        <result property="starType" column="star_type" javaType="StarType"
+                typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
+    </resultMap>
+
+    <resultMap id="detailedStarResultMap" type="Star">
+        <constructor>
+            <idArg column="star_id" javaType="int"/>
+        </constructor>
+        <result property="name" column="star_name"/>
+        <result property="coordinate1" column="coordinate1"/>
+        <result property="coordinate2" column="coordinate2"/>
+        <result property="starType" column="star_type" javaType="StarType"
+                typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
+        <result property="discoverer" column="discoverer"/>
+    </resultMap>
+</mapper>
+
 

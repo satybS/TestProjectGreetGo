@@ -1,6 +1,7 @@
 package greetGoTestProject.service;
 
 import greetGoTestProject.model.Star;
+import greetGoTestProject.model.StarType;
 import greetGoTestProject.util.exception.NotFoundException;
 
 import java.util.Collection;
@@ -10,10 +11,25 @@ import java.util.Collection;
  */
 public interface StarService {
 
+
+    void saveStar(Star star);
+
+    void updateStar(Star star) throws NotFoundException;
+
+    void deleteStar (int id) throws NotFoundException;
+
     Star getStar(int id) throws NotFoundException;
-//    void delete(int id) throws NotFoundException;
-//    Collection<Star> getAll();
-//    Star update(Star star) throws NotFoundException;
-//    Star save(Star star);
+
+    Collection<Star> getAllStars();
+
+    Collection<StarType> getAllStarTypes();
+
+    Collection<String>getAllDiscoverers();
+
+
+
+
+
+
 
 }

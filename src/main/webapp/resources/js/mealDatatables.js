@@ -1,14 +1,14 @@
-var ajaxUrl = 'ajax/profile/meals/';
+var ajaxUrl = 'ajax/stars/';
 var datatableApi;
 
-function updateTable() {
-    $.ajax({
-        type: "POST",
-        url: ajaxUrl + 'filter',
-        data: $('#filter').serialize(),
-        success: updateTableByData
-    });
-}
+// function updateTable() {
+//     $.ajax({
+//         type: "GET",
+//         url: ajaxUrl,
+//         success: updateTableByData
+//     });
+// }
+
 
 $(function () {
     datatableApi = $('#datatable').DataTable({
@@ -20,25 +20,25 @@ $(function () {
         "info": true,
         "columns": [
             {
-                "data": "dateTime",
-                "render": function (date, type, row) {
-                    if (type == 'display') {
-                        return date.replace('T', ' ').substr(0, 16);
-                    }
-                    return date;
-                }
+                "data": "name",
             },
             {
-                "data": "description"
+                "data": "coordinate1"
             },
             {
-                "data": "calories"
+                "data": "coordinate2"
+            },
+            {
+                "data": "starType"
+            },
+            {
+                "data": "discoverer"
             },
             {
                 "defaultContent": "",
                 "orderable": false,
                 "render": function (date, type, row) {
-                    return renderEditBtn(type, row, 'meals.edit');
+                    return renderEditBtn(type, row, 'stars.edit');
                 }
             },
             {
@@ -54,41 +54,6 @@ $(function () {
                 "desc"
             ]
         ],
-        "createdRow": function (row, data, dataIndex) {
-            $(row).addClass(data.exceed ? 'exceeded' : 'normal');
-        },
         "initComplete": makeEditable
-    });
-
-    var startDate = $('#startDate');
-    var endDate = $('#endDate');
-    startDate.datetimepicker({
-        timepicker: false,
-        format: 'Y-m-d',
-        formatDate: 'Y-m-d',
-        onShow: function (ct) {
-            this.setOptions({
-                maxDate: endDate.val() ? endDate.val() : false
-            })
-        }
-    });
-    endDate.datetimepicker({
-        timepicker: false,
-        format: 'Y-m-d',
-        formatDate: 'Y-m-d',
-        onShow: function (ct) {
-            this.setOptions({
-                minDate: startDate.val() ? startDate.val() : false
-            })
-        }
-    });
-
-    $('#startTime, #endTime').datetimepicker({
-        datepicker: false,
-        format: 'H:i'
-    });
-
-    $('#dateTime').datetimepicker({
-        format: 'Y-m-d H:i'
     });
 });

@@ -28,9 +28,9 @@ public class StarServiceImplTest {
 
     @Test
     public void testGetStar() throws Exception {
-//        Star star = starService.getStar(100001);
-        System.out.println(starService);
-        assertNotNull(starService);
+        Star star = starService.getStar(100001);
+        System.out.println(star);
+        assertNotNull(star);
     }
 
 }
