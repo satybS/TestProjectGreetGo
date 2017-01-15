@@ -1,23 +1,16 @@
 var ajaxUrl = 'ajax/stars/';
 var datatableApi;
 
-// function updateTable() {
-//     $.ajax({
-//         type: "GET",
-//         url: ajaxUrl,
-//         success: updateTableByData
-//     });
-// }
-
+function updateTable() {
+    $.ajax({
+        type: "GET",
+        url: ajaxUrl,
+        success: updateTableByData
+    });
+}
 
 $(function () {
-    datatableApi = $('#datatable').DataTable({
-        "ajax": {
-            "url": ajaxUrl,
-            "dataSrc": ""
-        },
-        "paging": false,
-        "info": true,
+    datatableApi = $('#datatable').DataTable(extendsOpts({
         "columns": [
             {
                 "data": "name",
@@ -37,9 +30,7 @@ $(function () {
             {
                 "defaultContent": "",
                 "orderable": false,
-                "render": function (date, type, row) {
-                    return renderEditBtn(type, row, 'stars.edit');
-                }
+                "render": renderEditBtn
             },
             {
                 "defaultContent": "",
@@ -55,5 +46,7 @@ $(function () {
             ]
         ],
         "initComplete": makeEditable
-    });
+    }));
+
 });
+

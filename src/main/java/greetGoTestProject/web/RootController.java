@@ -30,7 +30,7 @@ public class RootController {
         return "login";
     }
 
-    @PreAuthorize("hasRole('ROLE_USER')")
+
     @GetMapping("/stars")
     public String stars() {
         return "stars";
