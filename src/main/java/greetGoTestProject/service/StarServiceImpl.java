@@ -25,18 +25,22 @@ public class StarServiceImpl implements StarService {
     }
 
     @Override
-    public void updateStar(Star star) throws NotFoundException {
+    public void updateStar(Star star) {
         starMapper.updateStar(star);
     }
 
     @Override
-    public void deleteStar(int id) throws NotFoundException {
+    public void deleteStar(int id) {
         starMapper.deleteStar(id);
     }
 
     @Override
     public Star getStar(int id) throws NotFoundException {
-        return starMapper.getStar(id);
+        Star star = starMapper.getStar(id);
+        if (star == null){
+            throw new NotFoundException("Star with id=" + id+ " not found");
+        }
+        return star;
     }
 
     @Override

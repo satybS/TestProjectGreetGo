@@ -14,9 +14,9 @@ public interface StarService {
 
     void saveStar(Star star);
 
-    void updateStar(Star star) throws NotFoundException;
+    void updateStar(Star star);
 
-    void deleteStar (int id) throws NotFoundException;
+    void deleteStar (int id);
 
     Star getStar(int id) throws NotFoundException;
 

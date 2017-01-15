@@ -6,14 +6,8 @@ function makeEditable() {
         failNoty(event, jqXHR, options, jsExc);
     });
 
-    var token = $("meta[name='_csrf']").attr("content");
-    var header = $("meta[name='_csrf_header']").attr("content");
-    $(document).ajaxSend(function(e, xhr, options) {
-        xhr.setRequestHeader(header, token);
-    });
 }
 
-// https://api.jquery.com/jquery.extend/#jQuery-extend-deep-target-object1-objectN
 function extendsOpts(opts) {
     $.extend(true, opts,
         {
@@ -41,9 +35,7 @@ function updateRow(id) {
     $('#modalTitle').html(edit_title);
     $.get(ajaxUrl + id, function (data) {
         $.each(data, function (key, value) {
-            form.find("input[name='" + key + "']").val(
-                key === value
-            );
+            form.find("input[name='" + key + "']").val(value);
         });
         $('#editRow').modal();
     });

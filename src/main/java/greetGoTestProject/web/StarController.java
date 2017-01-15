@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Collection;
 
 /**
@@ -33,7 +34,7 @@ public class StarController extends AbstractStarController {
     }
 
     @PostMapping
-    public ResponseEntity<String> updateOrCreateStar(Star star, BindingResult result) {
+    public ResponseEntity<String> updateOrCreateStar(@Valid Star star, BindingResult result) {
         if (result.hasErrors()) {
             StringBuilder sb = new StringBuilder();
             result.getFieldErrors().forEach(fe -> sb.append(fe.getField()).append(" ").append(fe.getDefaultMessage()).append("<br>"));

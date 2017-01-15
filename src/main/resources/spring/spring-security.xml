@@ -29,23 +29,4 @@
         </authentication-provider>
     </authentication-manager>
 
-    <!--<http>-->
-        <!--<intercept-url pattern="/login" access="permitAll"/>-->
-        <!--<intercept-url pattern="/**" access="isAuthenticated()"/>-->
-
-        <!--<form-login login-page="/login" default-target-url="/stars"-->
-                    <!--authentication-failure-url="/login?error=true"-->
-                    <!--login-processing-url="/spring_security_check"/>-->
-        <!--<logout logout-success-url="/login"/>-->
-        <!--&lt;!&ndash;<csrf disabled="true"/>&ndash;&gt;-->
-    <!--</http>-->
-    <!---->
-
-    <!--<authentication-manager>-->
-        <!--<authentication-provider>-->
-            <!--<user-service>-->
-                <!--<user name="admin" password="admin" authorities="isAuthenticated()" />-->
-            <!--</user-service>-->
-        <!--</authentication-provider>-->
-    <!--</authentication-manager>-->
 </beans:beans>

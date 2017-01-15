@@ -72,16 +72,6 @@
                     <protocol>org.apache.coyote.http11.Http11NioProtocol</protocol>
                 </configuration>
 
-                <!--<configuration>-->
-                <!--<configfiles>-->
-                    <!--<configfile>-->
-                        <!--<file>src/main/resources/tomcat/context.xml</file>-->
-                        <!--<todir>conf/Catalina/localhost/</todir>-->
-                        <!--<tofile>context.xml.default</tofile>-->
-                    <!--</configfile>-->
-                <!--</configfiles>-->
-                <!--</configuration>-->
-
                 <dependencies>
                     <dependency>
                         <groupId>org.postgresql</groupId>
@@ -89,16 +79,6 @@
                         <version>${postgresql.version}</version>
                     </dependency>
                 </dependencies>
-                <deployables>
-                    <deployable>
-                        <groupId>greetGoTestProject</groupId>
-                        <artifactId>greetGoTestProject</artifactId>
-                        <type>war</type>
-                        <properties>
-                            <context>greetGoTestProject</context>
-                        </properties>
-                    </deployable>
-                </deployables>
 
             </plugin>
         </plugins>
@@ -250,41 +230,17 @@
             <version>${jackson-json.version}</version>
         </dependency>
 
-        <!--Test-->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <artifactId>hamcrest-core</artifactId>
-                    <groupId>org.hamcrest</groupId>
-                </exclusion>
-            </exclusions>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.10</version>
         </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-all</artifactId>
-            <version>${hamcrest.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <!--<dependency>-->
-            <!--<groupId>org.testng</groupId>-->
-            <!--<artifactId>testng</artifactId>-->
-            <!--<version>6.10</version>-->
-        <!--</dependency>-->
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>${spring.version}</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-test</artifactId>
-            <version>${spring-security.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.validation</groupId>

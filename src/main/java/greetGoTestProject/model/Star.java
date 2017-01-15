@@ -1,5 +1,6 @@
 package greetGoTestProject.model;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -8,10 +9,15 @@ import java.io.Serializable;
 public class Star implements Serializable {
 
     private Integer id;
+    @NotNull
     private String name;
+    @NotNull
     private String coordinate1;
+    @NotNull
     private String coordinate2;
+    @NotNull
     private StarType starType;
+    @NotNull
     private String discoverer;
 
     public Star() {
@@ -100,5 +106,30 @@ public class Star implements Serializable {
                 ", starType=" + starType +
                 ", discoverer=" + discoverer +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Star)) return false;
+
+        Star star = (Star) o;
+
+        if (!id.equals(star.id)) return false;
+        if (!name.equals(star.name)) return false;
+        if (!coordinate1.equals(star.coordinate1)) return false;
+        if (!coordinate2.equals(star.coordinate2)) return false;
+        return discoverer.equals(star.discoverer);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + name.hashCode();
+        result = 31 * result + coordinate1.hashCode();
+        result = 31 * result + coordinate2.hashCode();
+        result = 31 * result + discoverer.hashCode();
+        return result;
     }
 }

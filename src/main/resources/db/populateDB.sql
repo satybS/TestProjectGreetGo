@@ -1,5 +1,5 @@
 DELETE FROM stars;
-DELETE from star_type;
+DELETE FROM star_type;
 
 ALTER SEQUENCE global_seq RESTART WITH 100000;
 
