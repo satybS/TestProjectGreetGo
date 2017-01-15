@@ -14,32 +14,8 @@
     <mvc:default-servlet-handler/>
     <mvc:annotation-driven/>
 
-    <!--<security:global-method-security secured-annotations="enabled" pre-post-annotations="enabled"/>-->
+    <security:global-method-security secured-annotations="enabled" pre-post-annotations="enabled"/>
 
-    <!--<mvc:annotation-driven conversion-service="conversionService">-->
-        <!--<mvc:message-converters>-->
-            <!--<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">-->
-                <!--&lt;!&ndash;<property name="objectMapper" ref="objectMapper"/>&ndash;&gt;-->
-            <!--</bean>-->
-            <!--<bean class="org.springframework.http.converter.StringHttpMessageConverter">-->
-                <!--<property name="supportedMediaTypes">-->
-                    <!--<list>-->
-                        <!--<value>text/plain;charset=UTF-8</value>-->
-                        <!--<value>text/html;charset=UTF-8</value>-->
-                    <!--</list>-->
-                <!--</property>-->
-            <!--</bean>-->
-        <!--</mvc:message-converters>-->
-    <!--</mvc:annotation-driven>-->
-
-    <!--<bean class="org.springframework.format.support.FormattingConversionServiceFactoryBean" id="conversionService">-->
-        <!--<property name="formatters">-->
-            <!--<set>-->
-                <!--<bean class="ru.javawebinar.topjava.util.converter.DateTimeFormatters.LocalTimeFormatter"/>-->
-                <!--<bean class="ru.javawebinar.topjava.util.converter.DateTimeFormatters.LocalDateFormatter"/>-->
-            <!--</set>-->
-        <!--</property>-->
-    <!--</bean>-->
 
     <context:component-scan base-package="greetGoTestProject.**.web"/>
 

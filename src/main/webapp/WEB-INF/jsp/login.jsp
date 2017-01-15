@@ -23,7 +23,6 @@
                         <button type="submit" class="btn btn-success"><spring:message code="app.login"/></button>
                     </form:form>
                 </li>
-                <jsp:include page="fragments/lang.jsp"/>
             </ul>
         </div>
     </div>
@@ -83,6 +82,5 @@
         Весь REST интерфейс покрывается JUnit тестами, используя Spring MVC Test и Spring Security Test.
     </div>
 </div>
-<jsp:include page="fragments/footer.jsp"/>
 </body>
 </html>

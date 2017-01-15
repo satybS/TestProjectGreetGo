@@ -14,6 +14,9 @@ public class Star implements Serializable {
     private StarType starType;
     private String discoverer;
 
+    public Star() {
+    }
+
     public Star(String name, String coordinate1, String coordinate2, StarType starType, String discoverer) {
         this.name = name;
         this.coordinate1 = coordinate1;

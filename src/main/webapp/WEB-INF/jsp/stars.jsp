@@ -58,7 +58,7 @@
                         <label for="coordinate1" class="control-label col-xs-3">Высота</label>
 
                         <div class="col-xs-9">
-                            <input class="form-control" id="coordinate1" name="name" placeholder="Высота"/>
+                            <input class="form-control" id="coordinate1" name="coordinate1" placeholder="Высота"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -80,7 +80,7 @@
                         <label for="discoverer" class="control-label col-xs-3">Открыватель</label>
 
                         <div class="col-xs-9">
-                            <input type="text" class="form-control" id="discoverer" name="starType" placeholder = "Открыватель"/>
+                            <input type="text" class="form-control" id="discoverer" name="discoverer" placeholder = "Открыватель"/>
                         </div>
                     </div>
                     <div class="form-group">
